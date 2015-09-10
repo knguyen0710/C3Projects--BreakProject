@@ -19,3 +19,5 @@
 
 # Ignore .env always
 .env
+
+public/uploads

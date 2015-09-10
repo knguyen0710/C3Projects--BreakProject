@@ -5,6 +5,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         uid_field: :email
     end
 
-  provider :instagram, ENV['INSTAGRAM_CLIENT_ID'], ENV['INSTAGRAM_CLIENT_SECRET']
+  provider :instagram, ENV['INSTAGRAM_ID'], ENV['INSTAGRAM_SECRET']
 
 end

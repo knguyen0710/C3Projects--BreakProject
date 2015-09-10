@@ -1,0 +1,18 @@
+<div class="sign-in">
+  <h3>Sign In<h3>
+    <%= form_tag "/auth/identity/callback", class: "form" do %>
+      <div class="form-group">
+        <%= label_tag :auth_key, "Email" %><br>
+        <%= text_field_tag :auth_key, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password %><br>
+        <%= password_field_tag :password, class: "form-control" %>
+      </div>
+      <div class="actions"><%= submit_tag "Login" %></div>
+    <% end %>
+    <h5> OR </h5>
+    <%= link_to "Log in w/ Instagram", "/auth/instagram", class: "btn btn-primary" %>
+  <h3>Create an Account</h3>
+    <%= link_to "Register", new_identity_path, class: "btn btn-default" %>
+</div>

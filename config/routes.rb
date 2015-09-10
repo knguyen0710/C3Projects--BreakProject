@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-
   # Signing in and out
   get '/signin', to: 'home#signin', as: 'signin'
   delete 'signout', to: 'sessions#destroy', as: 'signout'
