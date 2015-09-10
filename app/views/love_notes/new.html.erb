@@ -1,0 +1,17 @@
+<h3>Write a Note for Tyresa</h3>
+<%= form_for @note, class: "form" do |f| %>
+  <div class="form-group">
+
+    <%= f.file_field :image, class: "form-control title-font" %>
+
+    <%= f.label :remote_image_url, "Or use an image URL", class: "title-font" %>
+    <%= f.text_field :remote_image_url, class: "form-control" %>
+
+    <%= f.label :note, "Send your love, well wishes, etc..", class: "title-font" %>
+    <%= f.text_area :note, class: "form-control" %>
+
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <br>
+    <%= f.submit "Send", class: "btn btn-default title-font form-control"%>
+  </div>
+    <% end %>

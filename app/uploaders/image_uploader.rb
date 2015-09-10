@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'carrierwave/processing/mini_magick'
 
 class ImageUploader < CarrierWave::Uploader::Base
 
@@ -25,13 +26,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  process :resize_to_fit => [200, 200]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
+  version :resized do
+    process :resize_to_fit => [200, 200]
+  end
+
   version :thumb do
     process :resize_to_fit => [50, 50]
   end
