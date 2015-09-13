@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911005845) do
+ActiveRecord::Schema.define(version: 20150913210041) do
 
   create_table "funds", force: :cascade do |t|
     t.integer  "amount"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150911005845) do
     t.datetime "updated_at",       null: false
     t.string   "image"
     t.string   "remote_image_url"
+    t.integer  "user_id"
   end
 
   create_table "media", force: :cascade do |t|

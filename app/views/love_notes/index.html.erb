@@ -1,4 +1,7 @@
 <h3>Love Notes to the NewlyWeds</h3>
+<%= link_to "Leave a Note", new_love_note_path, class: "btn btn-primary btn-sm title-font" %>
+<br>
+<br>
 <% @notes.each do |note| %>
   <div class="col-md-6 center">
     <div class="well">
@@ -6,10 +9,12 @@
       <span class="love-image"><%= image_tag(note.image_url(:thumb)) %></span>
       <% end %>
       <% if note.note %>
-      <span class="love-text"><%= note.note %></span>
+      <span class="love-text title-font"><%= note.note %></span>
       <% end %>
       <span class="from-text">
-      With love, <%= User.find(note.user_id).name %>
+      <br>
+      <p class="from-note title-font">With love,
+        <br><%= User.find(note.user_id).name %></p>
       </span>
     </div>
   </div>

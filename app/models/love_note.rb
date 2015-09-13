@@ -1,4 +1,7 @@
 class LoveNote < ActiveRecord::Base
+# Associations ---------------------------------------
+belongs_to :user
+
 # Mounted Objects ------------------------------------
   mount_uploader :image, ImageUploader
 
