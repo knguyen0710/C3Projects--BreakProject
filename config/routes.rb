@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'search/:source/:hashtag', to: 'medias#search_results', as: 'search_results'
 
   resources :love_notes
+  resources :funds
+  resources :medias
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

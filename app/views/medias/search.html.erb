@@ -23,21 +23,10 @@
               <%= image_tag(user["profile_picture"], class: "img-thumbnail", size: "50x50") %>
               @<%= user["username"] %>
 
-              <!-- Cannot subscribe to private user accounts -->
-              <% if private_user?(user["id"]) %>
-                <%= link_to "Private User", root_path, class: "btn btn-default disabled"%>
-
-              <!-- Can 'unsubscribes' from user accounts you already follow -->
-              <% elsif currently_following?(user["id"]) %>
-                <%= link_to "Unsubscribe", unsubscribe_path(find_subscription_id(user["id"])), method: :put, class: "btn btn-danger" %>
-
-              <!-- Can subscribe to public user accounts -->
-              <% else %>
                 <%= form_tag subscriptions_path(user) do %>
                   <%= hidden_field_tag :source, "instagram" %>
                   <%= submit_tag "Subscribe", class: "btn btn-success btn-sm" %>
                 <% end %>
-              <% end %>
             </li>
           <% end %>
         </ul>

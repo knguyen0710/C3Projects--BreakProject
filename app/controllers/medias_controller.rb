@@ -1,19 +1,24 @@
-class MediasController < ApplicationController
-  def instagram_hash_redirect
-  if params[:user].present?
-    redirect_to search_results_path(params[:source], params[:user])
-  else
-    flash[:errors] = "Please enter a hashtag to search."
-    redirect_to search_path
-  end
-end
+require 'api_helper'
 
-# this displays results on the search page
+class MediasController < ApplicationController
+  def index
+
+  end
+
+  def instagram_redirect
+    if params[:tag].present?
+      redirect_to search_results_path(params[:source], params[:tag])
+    else
+      flash[:errors] = "Please enter a hashtag to search."
+      redirect_to search_path
+    end
+  end
+
   def search_results
-    @query = params[:user]
+    @query = params[:hashtag]
     processed_query = sanitize(@query)
     @source = params[:source]
-    @results = ApiHelper.user_search(processed_query, USER_COUNT, @source)
+    @results = ApiHelper.hash_search(processed_query, @source)
     if @results.count == 0
       flash[:notice] = "No users matching '#{@query}'."
     end
