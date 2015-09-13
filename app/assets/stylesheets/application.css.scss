@@ -17,6 +17,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+.sign-in-box {
+  padding-bottom: 20px;
+  padding-top: 10px;
+  margin-top: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 500px;
+  background-color: white;
+  display: block;
+  text-align: center;
+  opacity: 0.9;
+}
+
 .title-font, h3 {
   font-family: Pacifico, cursive;
 }
@@ -24,6 +39,16 @@
 .well-text {
   font-family: Pacifico, cursive;
   color: white;
+  font-size: 20px;
+}
+
+.sign-in {
+  color: black;
+}
+
+span.just-right {
+  text-align: right;
+  list-style: none;
 }
 
 body {
@@ -33,17 +58,15 @@ body {
 .center {
   text-align: center;
 }
-// .header-img {
-  // background-image: url("runner.jpg");
-  // background-size: contain;
-// }
 
+// HOME PAGE --------------------------------------------------------
 .home-left, .home-right {
   background-image: url("bouquet.jpg");
-  background-size: contain;
+  background-size: cover;
   padding-top: 20px;
   margin-top: 20px;
   border: none;
+  background-position: 3px;
 }
 
 .home-middle {
@@ -68,6 +91,12 @@ body {
   border-bottom: 5px solid black;
 }
 
+// FOOTER -------------------------------------------------------
+.navbar {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -82,11 +111,17 @@ body {
   color: #696B6B;
 }
 
-span.just-right {
-  text-align: right;
-  list-style: none;
+// Link Styles -----------------------------------------------
+a:link {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
 }
 
-a:link {
-  text-decoration: none;
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: black;
 }

@@ -11,6 +11,11 @@ Rails.application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
+  get '/search', to: 'medias#search', as: 'search'
+  post '/instagram_hashtags', to: 'medias#instagram_redirect', as: 'instagram_redirect'
+
+  get 'search/:source/:hashtag', to: 'medias#search_results', as: 'search_results'
+
   resources :love_notes
 
   # Example of regular route:

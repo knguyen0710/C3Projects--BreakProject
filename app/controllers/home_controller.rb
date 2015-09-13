@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   include ActionView::Helpers::OutputSafetyHelper
 
-  def signin; end
+  def signin
+  end
 
   def index
   end

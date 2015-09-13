@@ -1,0 +1,45 @@
+<h3>Search Our Wedding Hashtags!</h3>
+<%= form_tag instagram_redirect_path, options: {class: "form-inline", role: "form"} do %>
+    <div class="form-group">
+      <%= label_tag :tag, "#" %>
+      <%= text_field_tag :tag, nil, class: "form-control title-font" %>
+
+      <%= hidden_field_tag :source, "instagram" %>
+
+      <%= submit_tag "Search", class: "btn btn-default btn-sm title-font" %>
+    </div>
+  <% end %>
+
+  <% if action_name == "search_results" %>
+    <div class="panel panel-default panel-change">
+      <div class="panel panel-heading">
+        <h1 class="center" id="top"><%= @source.capitalize %> results for "<%= @query %>"</h1>
+      </div>
+
+      <% if params[:source] == "instagram" %>
+        <ul class="search-results">
+          <% @results.each do |user| %>
+            <li>
+              <%= image_tag(user["profile_picture"], class: "img-thumbnail", size: "50x50") %>
+              @<%= user["username"] %>
+
+              <!-- Cannot subscribe to private user accounts -->
+              <% if private_user?(user["id"]) %>
+                <%= link_to "Private User", root_path, class: "btn btn-default disabled"%>
+
+              <!-- Can 'unsubscribes' from user accounts you already follow -->
+              <% elsif currently_following?(user["id"]) %>
+                <%= link_to "Unsubscribe", unsubscribe_path(find_subscription_id(user["id"])), method: :put, class: "btn btn-danger" %>
+
+              <!-- Can subscribe to public user accounts -->
+              <% else %>
+                <%= form_tag subscriptions_path(user) do %>
+                  <%= hidden_field_tag :source, "instagram" %>
+                  <%= submit_tag "Subscribe", class: "btn btn-success btn-sm" %>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>

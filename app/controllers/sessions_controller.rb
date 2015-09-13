@@ -1,21 +1,21 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_signin, only: [:create]
 
-def create
-  @user = User.find_or_create_from_omniauth(auth_hash)
-  session[:user_id] = @user.id
+  def create
+    @user = User.find_or_create_from_omniauth(request.env['omniauth.auth'])
+    session[:user_id] = @user.id
+    redirect_to root_path
+  end
 
-  redirect_to root_path
-end
+  def destroy
+    reset_session
+    redirect_to signin_path
+  end
 
-def destroy
-  reset_session
-  redirect_to sigin_path
-end
+  private
 
-private
-
-def auth_hash
-  request.env['omniauth.auth']
-end
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 
 end

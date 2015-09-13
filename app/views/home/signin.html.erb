@@ -2,9 +2,9 @@
   <h3>Sign In</h3>
   <br>
   <% unless Rails.env.production? %>
-  <%= link_to 'Sign in (dev strategy)', '/auth/developer', class: "btn btn-default" %>
+  <%= button_to 'Sign in (dev strategy)', '/auth/developer', class: "btn btn-default title-font" %>
 
     <h3><span class="sign-line">OR</span></h3>
   <% end %>
-    <%= link_to 'Sign in w/ Instagram', '/auth/instagram', class: "btn btn-primary" %>
+    <%= button_to 'Sign in w/ Instagram', '/auth/instagram', class: "btn btn-primary title-font" %>
 </div>
