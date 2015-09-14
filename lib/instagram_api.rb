@@ -1,10 +1,9 @@
 class InstagramApi
-
-  INSTA_TAG = "https://api.instagram.com/v1/tags/search?q="
+  INSTA_TAG = "https://api.instagram.com/v1/tags/"
 
   def hash_search(query)
-    response = HTTParty.get(INSTA_TAG + query + "&access_token=#{ENV["INSTAGRAM_ACCESS_TOKEN"]}" )
-
+    response = HTTParty.get(INSTA_TAG + query + "/media/recent?access_token=#{ENV["INSTAGRAM_ACCESS_TOKEN"]}" )
+    raise
     return response["data"]
   end
 

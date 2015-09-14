@@ -1,6 +1,7 @@
 require 'api_helper'
 
 class MediasController < ApplicationController
+
   def index
 
   end
@@ -18,9 +19,9 @@ class MediasController < ApplicationController
     @query = params[:hashtag]
     processed_query = sanitize(@query)
     @source = params[:source]
-    @results = ApiHelper.hash_search(processed_query, @source)
+    @results = ApiHelper.hash_search(processed_query, @source).first(5)
     if @results.count == 0
-      flash[:notice] = "No users matching '#{@query}'."
+      flash[:notice] = "No results matching '#{@query}'."
     end
     render 'search'
   end
