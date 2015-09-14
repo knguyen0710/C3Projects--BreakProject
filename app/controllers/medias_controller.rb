@@ -3,7 +3,16 @@ require 'api_helper'
 class MediasController < ApplicationController
 
   def index
+    if Medium.all.length > 0
+      @media = Medium.all
+    end
+    render :search
+  end
 
+  def create
+    @media = Medium.create(media_params)
+
+    redirect_to medias_path
   end
 
   def instagram_redirect
@@ -30,5 +39,9 @@ private
 
   def sanitize(input)
     input.delete("#")
+  end
+
+  def media_params
+    {image: params[:image], avatar_url: params[:avatar_url], handle: params[:handle]}
   end
 end

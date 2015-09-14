@@ -17,7 +17,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+.search-results {
+  list-style: none;
+}
 .sign-in-box {
   padding-bottom: 20px;
   padding-top: 10px;

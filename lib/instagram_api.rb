@@ -3,7 +3,7 @@ class InstagramApi
 
   def hash_search(query)
     response = HTTParty.get(INSTA_TAG + query + "/media/recent?access_token=#{ENV["INSTAGRAM_ACCESS_TOKEN"]}" )
-    raise
+
     return response["data"]
   end
 

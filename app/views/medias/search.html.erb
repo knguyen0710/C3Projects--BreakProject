@@ -1,7 +1,8 @@
 <h3>Search Our Wedding Hashtags!</h3>
+<div class="form-inline">
 <%= form_tag instagram_redirect_path, options: {class: "form-inline", role: "form"} do %>
-    <div class="form-group">
-      <%= label_tag :tag, "#" %>
+    <div class="form-group col-md-4">
+      <%= label_tag :tag, "" %>
       <%= text_field_tag :tag, nil, class: "form-control title-font" %>
 
       <%= hidden_field_tag :source, "instagram" %>
@@ -9,7 +10,10 @@
       <%= submit_tag "Search", class: "btn btn-default btn-sm title-font" %>
     </div>
   <% end %>
-
+</div>
+<br>
+<br>
+<br>
   <% if action_name == "search_results" %>
     <div class="panel panel-default panel-change">
       <div class="panel panel-heading">
@@ -18,17 +22,32 @@
 
       <% if params[:source] == "instagram" %>
         <ul class="search-results">
-          <% @results.each do |user| %>
+          <% @results.each do |tag| %>
             <li>
-              <%= image_tag(user["profile_picture"], class: "img-thumbnail", size: "50x50") %>
-              @<%= user["username"] %>
+              <%= image_tag(tag["link"]) %>
+              <%= image_tag(tag["user"]["profile_picture"], class: "img-thumbnail", size: "50x50") %>
+              @<%= tag["user"]["username"] %>
 
-                <%= form_tag subscriptions_path(user) do %>
-                  <%= hidden_field_tag :source, "instagram" %>
-                  <%= submit_tag "Subscribe", class: "btn btn-success btn-sm" %>
-                <% end %>
+          <%= form_tag medias_path do %>
+              <%= hidden_field_tag :image, tag["link"] %>
+              <%= hidden_field_tag :avatar_url, tag["user"]["profile_picture"] %>
+              <%= hidden_field_tag :handle, tag["user"]["username"] %>
+
+              <%= submit_tag "Save Image", class: "btn btn-default btn-sm"%>
+          <% end %>
             </li>
           <% end %>
         </ul>
       <% end %>
     <% end %>
+
+<br>
+    <h3 class="title-font">--  Saved Photos  --</h3>
+      <% if @media %>
+        <%= @media.each do |media| %>
+          <%= image_tag(media.image) %>
+          <p class="title-font"> posted by: </p>
+          <%= image_tag(media.avatar_url, class: "img img-thumbnail", size: "50x50") %>
+          <span class="title-font">@<%= media.handle %></span>
+        <% end %>
+      <% end %>

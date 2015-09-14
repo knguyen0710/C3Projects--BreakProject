@@ -1,4 +1,11 @@
 # C3Projects--BreakProject
+What is the goal of the project?
+Who is the target audience (can be just yourself)?
+What are your personal learning goals?
+What technologies/frameworks/patterns will you be employing?
+What are the tech and/or skill dependencies of your project?
+What does success look like for this project? What does done mean?
+
 I will be creating a post-wedding website for guests of the bride and groom to post notes and pictures for the couple to view. The bride and groom will have administrative rights to view all posts, while guests will only be able to view what they, themselves have posted/uploaded.
 
 ## Project Deliverables

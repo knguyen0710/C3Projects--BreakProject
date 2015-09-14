@@ -4,7 +4,6 @@ class ApiHelper
     case source
     when ApplicationController::INSTAGRAM
       InstagramApi.new.hash_search(query)
-      raise
     end
   end
 
